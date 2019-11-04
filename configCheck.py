@@ -395,6 +395,57 @@ with open('config.plist') as c:
 	if not B == '':
 		missing+=B
 
-####  NVRAM  ####
+# Check for Generic
+with open('config.plist') as c:
+	line = c.readline()
+	num = 1
+	lang='Please Remove'
+	while line:
+		line = c.readline()
+
+		if num == 2:
+			lang+=f'{line}\n'
+			break
+
+		if '<key>prev-lang:kbd</key>' in line:
+			lang+=f'\n{line}\n'
+			num += 1
+
+	if not lang == 'Please Remove':
+		missing+=lang
+
+####  SMBIOS CHECK  ####
+B=''
+with open('config.plist') as c:
+	line = c.readline()
+	while line:
+		line = c.readline()
+		if '<key>SMBIOS</key>' in line:
+			Quirks=True
+		
+		if Quirks:
+			if '<dict>' in line:
+				Arr=True
+
+			if '</dict>' in line:
+				Arr=False
+				Quirks=False
+				ACPI=False
+		if Arr:
+			if 'M000000000001' in line and 'BoardSerialNumber' in prelin:
+				B += f' - {prelin} needs to be valid\n'
+
+			if 'W0000000001' in line and 'SystemSerialNumber' in prelin:
+				B += f' - {prelin} needs to be valid\n'
+
+			if '00000000-0000-0000-0000-000000000000' in line and 'SystemUUID' in prelin:
+				B += f' - {prelin} needs to be valid\n'
+
+			prelin=line
+
+
+	if not B == '':
+		missing+=B
+
 
 print(missing)
