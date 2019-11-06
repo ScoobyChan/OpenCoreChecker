@@ -14,6 +14,7 @@ with open('config.plist') as c:
 	line = c.readline()
 	while line:
 		line = c.readline()
+		
 		# Check For SSDT
 		if 'ACPI' in line:
 			ACPI=True
@@ -43,6 +44,7 @@ with open('config.plist') as c:
 	line = c.readline()
 	while line:
 		line = c.readline()
+		
 		# Check Quirks
 		if 'ACPI' in line:
 			ACPI=True
@@ -76,6 +78,7 @@ with open('config.plist') as c:
 	line = c.readline()
 	while line:
 		line = c.readline()
+		
 		if 'Booter' in line:
 			ACPI=True
 		if ACPI:
@@ -112,6 +115,7 @@ for kext in k:
 		line = c.readline()
 		while line:
 			line = c.readline()
+			
 			if 'Kernel' in line:
 				ACPI=True
 			if ACPI:
@@ -172,6 +176,7 @@ with open('config.plist') as c:
 	line = c.readline()
 	while line:
 		line = c.readline()
+		
 		if '<key>Misc</key>' in line:
 			ACPI=True
 
@@ -195,6 +200,7 @@ with open('config.plist') as c:
 	line = c.readline()
 	while line:
 		line = c.readline()
+		
 		if 'Misc' in line:
 			ACPI=True
 		if ACPI:
@@ -228,6 +234,7 @@ with open('config.plist') as c:
 	line = c.readline()
 	while line:
 		line = c.readline()
+		
 		if 'Misc' in line:
 			ACPI=True
 		if ACPI:
@@ -261,6 +268,7 @@ with open('config.plist') as c:
 	line = c.readline()
 	while line:
 		line = c.readline()
+		
 		if 'Misc' in line:
 			ACPI=True
 		if ACPI:
@@ -294,6 +302,7 @@ with open('config.plist') as c:
 	line = c.readline()
 	while line:
 		line = c.readline()
+		
 		if 'Misc' in line:
 			ACPI=True
 		if ACPI:
@@ -334,6 +343,7 @@ for driver in d:
 		line = c.readline()
 		while line:
 			line = c.readline()
+			
 			if 'UEFI' in line:
 				ACPI=True
 			if ACPI:
@@ -366,6 +376,7 @@ with open('config.plist') as c:
 	line = c.readline()
 	while line:
 		line = c.readline()
+		
 		if 'UEFI' in line:
 			ACPI=True
 		if ACPI:
@@ -402,6 +413,7 @@ with open('config.plist') as c:
 	lang='Please Remove'
 	while line:
 		line = c.readline()
+		
 
 		if num == 2:
 			lang+=f'{line}\n'
@@ -420,6 +432,7 @@ with open('config.plist') as c:
 	line = c.readline()
 	while line:
 		line = c.readline()
+		
 		if '<key>SMBIOS</key>' in line:
 			Quirks=True
 		
