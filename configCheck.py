@@ -179,8 +179,8 @@ with open('config.plist') as c:
 			if 'Debug' in line:
 				Quirks=True
 		if Quirks:
-			if 'DisableWatchDog' in prelin and 'true' in line:
-				md += ' - DisableWatchDog needs to be false\n'
+			if 'DisableWatchDog' in prelin and 'false' in line:
+				md += ' - DisableWatchDog needs to be true\n'
 
 			prelin=line
 
@@ -203,8 +203,8 @@ with open('config.plist') as c:
 		# print(Quirks)
 		if Quirks:
 			if 'AllowNvramReset' in prelin:
-				if 'true' in line:
-					ms += ' - AllowNvramReset needs to be false\n'
+				if 'false' in line:
+					ms += ' - AllowNvramReset needs to be true\n'
 					Arr = True
 					break
 				else:
